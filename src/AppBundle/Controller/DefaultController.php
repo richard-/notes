@@ -72,17 +72,8 @@ class DefaultController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            // tells Doctrine you want to (eventually) save the note (no queries yet)
             $em->persist($note);
-            //$em->persist($user);
-            //die(dump());
-            // actually executes the queries (i.e. the INSERT query)
             $em->flush();
-
-            // unset($note);
-            // unset($form);
-            // $note = new Notes();
-            // $form = $this->createForm(NotesType::class, $note);
 
             $this->addFlash(
                 "notice",
@@ -97,11 +88,6 @@ class DefaultController extends Controller
         return $this->render('default/new.html.twig', array(
             'form' => $form->createView(),
         ));        
-
-
-
-
-        // return new Response('Saved new note with id '.$note->getId());
     }
 
 
@@ -126,11 +112,7 @@ class DefaultController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            // tells Doctrine you want to (eventually) save the note (no queries yet)
             $em->persist($note);
-            //$em->persist($user);
-
-            // actually executes the queries (i.e. the INSERT query)
             $em->flush();  
 
             $this->addFlash(
