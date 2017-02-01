@@ -3,6 +3,8 @@ notes
 
 A Symfony project.
 
+![Alt text](screen.png?raw=true)
+
 It allows users to register/login and post private notes.
 
 Users must be logged in to view their notes.

@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    protected function getU()
+    private function getU()
     {
        return $this->get('security.token_storage')->getToken()->getUser();
     }
