@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+{% for flash_message in app.session.flashbag.get('notice') %}
+    <div class="alert alert-success">{{ flash_message }}</div>
+{% endfor %}
+{% if app.user != null %}
+    <h2>Hi {{ app.user }} here are youre notes:</h2>
+
+
+    {% if notes is defined %}
+    <table class="table table-bordered">
+        <tr>
+            <th width="20%">Name</th>
+            <th width="60%">Content</th>
+            <th width="20%">Controlls</th>
+        </tr>
+        {%for note in notes %}
+        <tr>
+            <td>{{ note.name }}</td>
+            <td>{{ note.content }}</td>
+            <td class="text-center">
+                <a class="btn btn-primary" href="/update/{{ note.id }}">update</a>
+                <a class="btn btn-danger" href="/delete/{{ note.id }}" onclick="return confirm('are u sure?')">delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a class="btn btn-primary" href="/create/">ADD NEW NOTE</a>
+    {% endif %}
+{% endif %}
+{% if app.user == null %}
+    <a href="/login" class="btn btn-info"> You need to login to see the notes 😜😜 >></a>
+{% endif %}
+
+{% endblock %}
